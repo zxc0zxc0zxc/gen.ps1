@@ -12,11 +12,11 @@ a new handler or service is one command instead of five minutes of copy-paste.
 ## Usage
 
 ```powershell
-./gen.ps1 <command> <Name>
+./gen.ps1 <command> <Name> [-Force]
 ```
 
-`Name` is used verbatim for Go identifiers and lowercased for file names, so
-pass it in PascalCase: `Order`, not `order`.
+`Name` is used verbatim for Go identifiers and converted to snake_case for file
+names, so pass it in PascalCase: `OrderItem` becomes `order_item_entity.go`.
 
 | Command | Writes | Contains |
 |---|---|---|
@@ -56,6 +56,9 @@ internal/
 PowerShell 5.1 or newer — Windows PowerShell or [PowerShell 7](https://github.com/PowerShell/PowerShell)
 on macOS and Linux. Nothing else; the script uses only built-in cmdlets.
 
+Run it from inside the target Go module. `make:repository` reads the module path
+from the nearest `go.mod` so that the generated imports are fully qualified.
+
 Handlers import [gin-gonic/gin](https://github.com/gin-gonic/gin); add it to the
 target project yourself:
 
@@ -65,5 +68,5 @@ go get github.com/gin-gonic/gin
 
 ## Notes
 
-Existing files are overwritten without asking. Generate into a clean working
-tree, or check `git status` before you run it twice on the same name.
+Existing files are left alone and reported as skipped; pass `-Force` to
+overwrite them. Files are written as UTF-8 without a BOM on every host.
