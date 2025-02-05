@@ -4,6 +4,7 @@
 [![Go](https://img.shields.io/badge/Go-1.21%2B-00ADD8?logo=go&logoColor=white)](https://go.dev/)
 [![Gin](https://img.shields.io/badge/Gin-handlers-008ECF?logo=gin&logoColor=white)](https://gin-gonic.com/)
 [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)](#requirements)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Artisan-style boilerplate generator for layered Go services. One PowerShell
 script, no install step: it writes the file and the directory it belongs in, so
